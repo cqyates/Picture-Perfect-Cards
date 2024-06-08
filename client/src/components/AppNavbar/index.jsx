@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {Navbar, Container, Modal, Tab, Nav} from 'react-bootstrap';
 
-import SignUpForm from '../SignupForm/index.jsx';
-import LoginForm from '../LoginForm/index.jsx';
+import SignUpForm from '../SignupForm';
+import LoginForm from '../LoginForm';
 
 import Auth from '../../utils/auth.js';
 
