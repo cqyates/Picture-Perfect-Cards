@@ -1,4 +1,4 @@
-import AppNavbar from "../AppNavbar/index.jsx"
+import AppNavbar from "../AppNavbar"
 const Header = () => {
   return (
     <div>
