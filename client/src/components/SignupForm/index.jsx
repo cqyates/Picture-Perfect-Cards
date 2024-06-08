@@ -6,6 +6,8 @@ import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
+// import "./style.css"
+
 const SignupForm = () => {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
@@ -44,11 +46,12 @@ const SignupForm = () => {
     }
 
     try {
-      const { data } = await addUser({
-        variables: { ...userFormData },
-      });
-      console.log(data);
-      Auth.login(data.addUser.token);
+      console.log(userFormData)
+      // const { data } = await addUser({
+      //   variables: { ...userFormData },
+      // });
+      // console.log(data);
+      // Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
     }
