@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@100..900&display=swap');
+
+#my-header {
+  background-color: rgb(92, 26, 40);
+  color: rgb(225, 148, 159);
+  height: 12vh;
+  padding-top: 1em
+}
+h1 {
+  font-family: "Big Shoulders Stencil Display", sans-serif;
+  letter-spacing: .25rem;
+  font-weight: bold;
+}

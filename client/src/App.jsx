@@ -1,17 +1,17 @@
+import { Outlet } from 'react-router-dom';
+
+import Header from './components/Header';
 
 import './App.css';
-import Header from "./components/Header";
 // import Footer from "./components/Footer";
-import {Outlet} from "react-router-dom"
 function App() {
   return (
-    <>
-    <Header/>
-    <main>
-    <Outlet/>
-    </main>
-   
-    </>
+    <div style={{ border: '1px solid black', height: '100%' }}>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 

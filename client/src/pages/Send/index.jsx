@@ -1,9 +1,9 @@
-const Save = () => {
+const Send = () => {
   return (
     <div>
-      <h1>Save Page</h1>
+      <h1>Send Page</h1>
     </div>
   )
 }
 
-export default Save
+export default Send
