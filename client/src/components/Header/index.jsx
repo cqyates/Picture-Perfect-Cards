@@ -1,9 +1,12 @@
-import AppNavbar from "../AppNavbar"
+import AppNavbar from "../AppNavbar";
+
+import "./style.css";
+
 const Header = () => {
   return (
-    <div>
+    <header id="my-header">
       <AppNavbar/>
-    </div>
+    </header>
   )
 }
 
