@@ -1,4 +1,4 @@
-import SavedPictureGrid from "../../components/savedPictureGrid"
+import SavedPictureGrid from "../../components/savedPictureGrid/index.jsx"
 //add ME query to this page
 import {useQuery} from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
