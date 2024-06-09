@@ -50,7 +50,7 @@ const PictureCard = ({ id, imgSrc }) => {
        
       >
       <Card.Img
-        src={imgSrc.small}
+        src={imgSrc}
         id={id}
       />
     </Card>
