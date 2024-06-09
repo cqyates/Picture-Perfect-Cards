@@ -1,14 +1,14 @@
 
-import PictureCard from "../PictureCard"
+import SavedPictureCard from "../SavedPictureCard"
 const SavedPictureGrid = ({photoArray}) => {
-
+console.log(photoArray)
  
   return (
     <div>
       {photoArray.length == 0 ? <></>: 
       <section style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
       {photoArray.map(({id, medSrc}) => (
-       <PictureCard key={id} id={id} imgSrc={medSrc} />
+       <SavedPictureCard key={id} id={id} imgSrc={medSrc} />
       ))}
       
       </section>
