@@ -24,3 +24,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const SAVE_PHOTO = gql`
+  mutation savePhoto($photoData: PhotoInput) {
+    savePhoto(photoData: $photoData) {
+      _id
+      username
+      email
+      savedPhotos {
+        _id
+        photoId
+        createdAt
+      }
+    }
+  }
+`;
