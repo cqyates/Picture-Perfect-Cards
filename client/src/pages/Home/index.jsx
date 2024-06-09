@@ -10,9 +10,20 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
   const [pictureArray, setPictureArray] = useState([])
-  const handleSearch = () => {
+  const [page, setPage] = useState(1);
+  const [active, setActive] = useState()
+  const handlePageClick = (event) => {
+    const targetPage = parseInt(event.target.innerText);
+    handlePageChange(targetPage);
+    setActive(targetPage);
+  };
+  const handlePageChange = (page) => {
+    setPage(page);
+    handleSearch(page)
+  };
+  const handleSearch = (page) => {
     console.log(searchInput);
-    fetch(`/api/images/${searchInput}`).then(response => response.json()).then(data => {
+    fetch(`/api/images/${searchInput}/${page}`).then(response => response.json()).then(data => {
       console.log(data.photos)
       setPictureArray(data.photos)
     })
@@ -38,7 +49,11 @@ const Home = () => {
           </Form.Group>
         </Col>
         <Col xxl={9} style={{border: "1px solid red"}}>
-          <PictureGrid pictureArray={pictureArray}/>
+          <PictureGrid 
+          pictureArray={pictureArray} 
+          page={page}
+          handlePageClick={handlePageClick}
+          active={active}/>
         </Col>
       </Row>
     </Container>
