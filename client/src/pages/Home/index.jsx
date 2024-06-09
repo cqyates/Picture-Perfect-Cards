@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 
-import PictureGrid from "../../components/PictureGrid"
+import PictureGrid from "../../components/PictureGrid/index.jsx"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';

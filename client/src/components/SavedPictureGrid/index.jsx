@@ -1,5 +1,6 @@
 
-import SavedPictureCard from "../SavedPictureCard"
+import SavedPictureCard from "../SavedPictureCard/index.jsx"
+
 const SavedPictureGrid = ({photoArray}) => {
 console.log(photoArray)
  

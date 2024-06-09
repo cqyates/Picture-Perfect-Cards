@@ -1,4 +1,4 @@
-import AppNavbar from "../AppNavbar";
+import AppNavbar from "../AppNavbar/index.jsx";
 
 import "./style.css";
 

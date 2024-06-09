@@ -1,4 +1,4 @@
-import SavedPictureGrid from "../../components/savedPictureGrid/index.jsx"
+// import SavedPictureGrid from "../../components/savedPictureGrid/index.jsx"
 //add ME query to this page
 import {useQuery} from "@apollo/client";
 import { QUERY_ME } from '../../utils/queries';
@@ -17,7 +17,7 @@ const Save = () => {
   return (
     <div>
       <h1>Save Page</h1>
-      <SavedPictureGrid photoArray={photoArray}/>
+      {/* <SavedPictureGrid photoArray={photoArray}/> */}
     </div>
   )
 }

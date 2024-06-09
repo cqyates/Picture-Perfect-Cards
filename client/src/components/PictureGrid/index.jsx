@@ -1,5 +1,5 @@
 
-import PictureCard from "../PictureCard"
+import PictureCard from "../PictureCard/index.jsx"
 import Pagination from "react-bootstrap/Pagination";
 const PictureGrid = ({pictureArray, active, handlePageClick}) => {
 
