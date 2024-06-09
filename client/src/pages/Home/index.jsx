@@ -2,14 +2,20 @@ import { useState } from 'react';
 
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 
+import PictureGrid from "../../components/PictureGrid"
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
+  const [pictureArray, setPictureArray] = useState([])
   const handleSearch = () => {
     console.log(searchInput);
-    // run pexel fetch through the backend
+    fetch(`/api/images/${searchInput}`).then(response => response.json()).then(data => {
+      console.log(data.photos)
+      setPictureArray(data.photos)
+    })
   };
   const handleInputChange = (event) => {
     console.log(event.target.value);
@@ -18,7 +24,7 @@ const Home = () => {
   return (
     <Container>
       <Row>
-        <Col lg={3} sm={6}>
+        <Col xl={3} sm={6}>
           <Form.Group style={{display: "flex"}}>
             <Form.Control
               type="text"
@@ -30,6 +36,9 @@ const Home = () => {
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </Form.Group>
+        </Col>
+        <Col xxl={9} style={{border: "1px solid red"}}>
+          <PictureGrid pictureArray={pictureArray}/>
         </Col>
       </Row>
     </Container>
