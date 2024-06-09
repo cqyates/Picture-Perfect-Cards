@@ -43,7 +43,16 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-  
+    savePhoto: async (parent, {photoData}, context) => {
+      //must be signed in
+      if (context.user) {
+        const userData = await User.findOneAndUpdate({ _id: context.user._id }, {$push: {savedPhotos: photoData }}, {new: true, runValidators: true})
+        
+        return userData
+      }
+
+      throw AuthenticationError;
+    }
   },
 };
 

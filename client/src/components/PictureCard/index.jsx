@@ -1,10 +1,8 @@
 import {Card} from 'react-bootstrap';
 const PictureCard = ({ id, imgSrc }) => {
   const handleImageSelect = (event) => {
-    console.log(event)
-    // const pexelID = event.target.getAttribute('data-pid');
-    // localStorage.setItem('currentImage', pexelID);
-    // document.location.href = "/build"
+    const pexelID=event.target.getAttribute("id")
+    console.log(pexelID)
   };
 
   return (
@@ -15,11 +13,12 @@ const PictureCard = ({ id, imgSrc }) => {
         margin: '10px 0',
         boxShadow: '1px 1px 5px grey',
       }}
-    >
+        onClick={handleImageSelect}
+       
+      >
       <Card.Img
         src={imgSrc.small}
-        onClick={handleImageSelect}
-        data-pid={id}
+        id={id}
       />
     </Card>
   );
