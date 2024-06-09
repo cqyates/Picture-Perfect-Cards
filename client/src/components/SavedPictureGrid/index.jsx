@@ -1,4 +1,4 @@
-import Pagination from "react-bootstrap/Pagination";
+
 import PictureCard from "../PictureCard"
 const SavedPictureGrid = ({photoArray}) => {
 
