@@ -8,10 +8,27 @@ const typeDefs = `
   type Photo {
     _id: ID!
     photoId: String!
+    alt: String!
+    lgSrc: String!
+    medSrc: String!
+    orgSrc: String!
+    photographer: String
+    url: String!
+    smSrc: String!
+    xlSrc: String!
     createdAt: String
   }
   input PhotoInput {
-    photoId: String!
+    photoId: Int!
+    alt: String!
+    lgSrc: String!
+    medSrc: String!
+    orgSrc: String!
+    photographer: String
+    url: String!
+    smSrc: String!
+    xlSrc: String!
+    createdAt: String
   }
   type Auth {
     token: ID!

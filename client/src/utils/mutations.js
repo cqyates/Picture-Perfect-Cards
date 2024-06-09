@@ -34,6 +34,14 @@ export const SAVE_PHOTO = gql`
         _id
         photoId
         createdAt
+        smSrc
+        medSrc
+        lgSrc
+        orgSrc
+        alt
+        xlSrc
+        photographer
+        url
       }
     }
   }

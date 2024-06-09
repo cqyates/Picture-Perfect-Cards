@@ -1,7 +1,6 @@
 const { User } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
-
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -16,7 +15,8 @@ const resolvers = {
      //tested succesfully from Apollo Server
     users: async (parent, args, context) => {
       return User.find({})
-    }
+    },
+    
   },
   Mutation: {
     //tested succesfully from Apollo Server
