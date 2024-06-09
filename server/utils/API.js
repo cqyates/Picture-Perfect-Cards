@@ -13,5 +13,16 @@ router.get("/api/images/:query/:page", async (req, res) => {
     res.json({msg: "failed to find " + req.params.query + " images"})
   }
 })
+router.get("/api/images/:id", async(req, res) => {
+  try {
+    const results = await client.photos.show({id: req.params.id})
+    res.json(results)
+  }
+  catch (err) {
+    res.json({msg: `failed to find information on image #${req.params.id}`})
+  }
+})
+
+
 
 module.exports = router

@@ -14,8 +14,22 @@ const PictureCard = ({ id, imgSrc }) => {
       return false;
     }
     try {
+      const apiRes = await fetch(`/api/images/${pexelID}`)
+      const pData= await apiRes.json()
+      const photoObject = {
+        photoId: pData.id,
+        alt: pData.alt,
+        photographer: pData.photographer,
+        smSrc: pData.src.small,
+        medSrc: pData.src.medium,
+        orgSrc: pData.src.original,
+        lgSrc: pData.src.large,
+        xlSrc: pData.src.large2x,
+        url: pData.url
+      }
+      console.log(photoObject)
       const { data } = await savePhoto({
-        variables: { photoData: { photoId: pexelID } },
+        variables: { photoData: photoObject },
       });
       console.log(data);
     }
