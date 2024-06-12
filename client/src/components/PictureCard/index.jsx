@@ -17,7 +17,7 @@ const PictureCard = ({ id, imgSrc }) => {
       const apiRes = await fetch(`/api/images/${pexelID}`)
       const pData= await apiRes.json()
       const photoObject = {
-        photoId: pData.id,
+        photoId: pData.id.toString(),
         alt: pData.alt,
         photographer: pData.photographer,
         smSrc: pData.src.small,

@@ -19,15 +19,15 @@ const typeDefs = `
     createdAt: String
   }
   input PhotoInput {
-    photoId: Int!
+    photoId: String!
     alt: String!
-    lgSrc: String!
+    photographer: String
+    smSrc: String!
     medSrc: String!
     orgSrc: String!
-    photographer: String
-    url: String!
-    smSrc: String!
+    lgSrc: String!
     xlSrc: String!
+    url: String!
     createdAt: String
   }
   type Auth {
