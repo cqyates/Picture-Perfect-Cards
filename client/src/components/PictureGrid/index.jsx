@@ -1,5 +1,5 @@
 
-import PictureCard from "../PictureCard"
+import PictureCard from "../PictureCard/index.jsx"
 import Pagination from "react-bootstrap/Pagination";
 const PictureGrid = ({pictureArray, active, handlePageClick}) => {
 
@@ -17,7 +17,7 @@ const PictureGrid = ({pictureArray, active, handlePageClick}) => {
       {pictureArray.length == 0 ? <></>: 
       <section style={{display: "flex", flexWrap: "wrap", justifyContent: "space-around"}}>
       {pictureArray.map(({id, src}) => (
-       <PictureCard key={id} id={id} imgSrc={src} />
+       <PictureCard key={id} id={id} imgSrc={src.small} />
       ))}
       <Pagination onClick={handlePageClick}>{items}</Pagination>
       </section>

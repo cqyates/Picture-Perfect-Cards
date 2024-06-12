@@ -1,7 +1,7 @@
 import {Card} from 'react-bootstrap';
 import {useMutation} from "@apollo/client"
-import {SAVE_PHOTO} from "../../utils/mutations"
-import Auth from "../../utils/auth"
+import {SAVE_PHOTO} from "../../utils/mutations.js"
+import Auth from "../../utils/auth.js"
 
 const PictureCard = ({ id, imgSrc }) => {
   const [savePhoto, { error }] = useMutation(SAVE_PHOTO);
@@ -50,7 +50,7 @@ const PictureCard = ({ id, imgSrc }) => {
        
       >
       <Card.Img
-        src={imgSrc.small}
+        src={imgSrc}
         id={id}
       />
     </Card>
