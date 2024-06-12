@@ -31,17 +31,16 @@ export const SAVE_PHOTO = gql`
       username
       email
       savedPhotos {
-        _id
         photoId
-        createdAt
+        alt
+        photographer
         smSrc
         medSrc
-        lgSrc
         orgSrc
-        alt
+        lgSrc
         xlSrc
-        photographer
         url
+        createdAt
       }
     }
   }

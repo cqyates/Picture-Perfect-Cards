@@ -1,8 +1,8 @@
-import {Card} from 'react-bootstrap';
+import Card from "react-bootstrap/Card"
 
-const SavedPictureCard = ({ id, imgSrc }) => {
+const SavedPictureCard = ({photo}) => {
 
-  return (
+  return(
     <Card
       style={{
         width: '16em',
@@ -10,14 +10,15 @@ const SavedPictureCard = ({ id, imgSrc }) => {
         margin: '10px 0',
         boxShadow: '1px 1px 5px grey',
       }}
+
        
       >
       <Card.Img
-        src={imgSrc}
-        id={id}
+        src={photo.medSrc}
+        id={photo.photoId}
       />
     </Card>
-  );
-};
+  )
+}
 
 export default SavedPictureCard;

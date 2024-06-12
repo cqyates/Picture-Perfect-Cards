@@ -7,17 +7,14 @@ export const QUERY_ME = gql`
       username
       email
       savedPhotos {
-        _id
         photoId
-        alt
+        smSrc
         lgSrc
-        medSrc
-        orgSrc
         url
         photographer
-        smSrc
-        xlSrc
-        createdAt
+        medSrc
+        orgSrc
+        alt
       }
     }
   }

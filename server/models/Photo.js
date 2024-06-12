@@ -1,17 +1,20 @@
-const { Schema, Types } = require('mongoose');
+const { Schema } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const photoSchema = new Schema(
   {
     photoId: {
-      type: Number,
+      type: String,
       required: true
     },
     alt: {
       type: String,
       required: true
     },
-    lgSrc: {
+    photographer: {
+      type: String,
+    },
+    smSrc: {
       type: String,
       required: true
     },
@@ -23,18 +26,15 @@ const photoSchema = new Schema(
       type: String,
       required: true
     },
-    photographer: {
+    lgSrc: {
       type: String,
+      required: true
+    },  
+    xlSrc: {
+      type: String,
+      required: true
     },
     url: {
-      type: String,
-      required: true
-    },
-    smSrc: {
-      type: String,
-      required: true
-    },
-    xlSrc: {
       type: String,
       required: true
     },
@@ -48,7 +48,7 @@ const photoSchema = new Schema(
     toJSON: {
       getters: true
     },
-    id: true
+    id: false
   }
 );
 
