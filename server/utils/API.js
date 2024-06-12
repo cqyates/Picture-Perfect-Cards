@@ -6,7 +6,7 @@ router.get("/api/images/:query/:page", async (req, res) => {
   const page = parseInt(req.params.page)
 
   try {
-    const results = await client.photos.search({query:"roads", per_page: 6, page: 1, totalResults:80, orientation: "landscape"})
+    const results = await client.photos.search({query:req.params.query, per_page: 6, page, totalResults:80, orientation: "landscape"})
     res.json(results)
   }
   catch (err) {
