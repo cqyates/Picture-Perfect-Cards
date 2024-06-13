@@ -8,16 +8,25 @@ import LargeImageViewer from '../../components/LargeImageViewer';
 const Save = () => {
   const { loading, data } = useQuery(QUERY_ME);
   const photoArray = data?.me.savedPhotos || [];
-  const [featuredImage, setFeaturedImage] = useState("")
+  const [featuredImage, setFeaturedImage] = useState(photoArray[0].lgSrc)
   const handleImageSelect = (event) => {
     console.log(event.target.getAttribute("value"))
     setFeaturedImage(event.target.getAttribute("value"))
+  }
+  const handleImageDelete = () => {
+    console.log(`delete image`)
+  }
+  const handleImageEdit = () => {
+    console.log(`edit image`)
+  }
+  const handleImageSend = () => {
+    console.log(`send image`)
   }
   return (
     <div>
       <Container>
         <Row>
-          <LargeImageViewer largeImage={featuredImage} />
+          <LargeImageViewer largeImage={featuredImage} handleImageDelete={handleImageDelete} handleImageEdit={handleImageEdit} handleImageSend={handleImageSend}/>
         </Row>
         <Row>
         {photoArray.map((photo) => (
