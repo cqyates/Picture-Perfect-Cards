@@ -45,3 +45,24 @@ export const SAVE_PHOTO = gql`
     }
   }
 `;
+export const REMOVE_PHOTO = gql`
+  mutation removePhoto($photoId: ID!) {
+    removePhoto(photoId: $photoId) {
+      _id
+      username
+      email
+      savedPhotos {
+        photoId
+        alt
+        photographer
+        smSrc
+        medSrc
+        orgSrc
+        lgSrc
+        xlSrc
+        url
+        createdAt
+      }
+    }
+  }
+`;

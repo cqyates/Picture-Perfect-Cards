@@ -44,6 +44,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     savePhoto(photoData: PhotoInput): User
+    removePhoto(photoId: ID!): User
   }
 `;
 
