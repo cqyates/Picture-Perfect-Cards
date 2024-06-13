@@ -1,29 +1,36 @@
-import { useState } from 'react';
+import {useState} from "react"
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries';
-import { Container, Card } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import SavedPictureCard from '../../components/SavedPictureCard';
+import LargeImageViewer from '../../components/LargeImageViewer';
 
 const Save = () => {
   const { loading, data } = useQuery(QUERY_ME);
-  const photoArray = data?.me.savedPhotos || []
-  console.log(photoArray)
+  const photoArray = data?.me.savedPhotos || [];
+  const [featuredImage, setFeaturedImage] = useState("")
+  const handleImageSelect = (event) => {
+    console.log(event.target.getAttribute("value"))
+    setFeaturedImage(event.target.getAttribute("value"))
+  }
   return (
     <div>
-      <Container style={{ border: '1px solid green', display: 'flex', flexWrap: "wrap"}}>
+      <Container>
+        <Row>
+          <LargeImageViewer largeImage={featuredImage} />
+        </Row>
+        <Row>
         {photoArray.map((photo) => (
-          <SavedPictureCard key={photo.photoId} photo={photo}/>
+          <SavedPictureCard 
+          key={photo.photoId}
+          id={photo.photoId}
+          smSrc={photo.smSrc}
+          lgSrc={photo.lgSrc}
+          handleImageSelect={handleImageSelect}
+         
+          />
         ))}
-        {/* <Card
-          style={{
-            width: '16em',
-            padding: '12px 12px 24px 12px',
-            margin: '10px 0',
-            boxShadow: '1px 1px 5px grey',
-          }}
-        >
-          <Card.Img src={} id={} />
-        </Card> */}
+        </Row>
       </Container>
     </div>
   );
