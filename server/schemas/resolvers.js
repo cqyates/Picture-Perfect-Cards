@@ -52,7 +52,20 @@ const resolvers = {
       }
 
       throw AuthenticationError;
-    }
+    },
+    removePhoto: async (parent, { photoId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedPhotos: { photoId } } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw AuthenticationError;
+    },
   },
 };
 
