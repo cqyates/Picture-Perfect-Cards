@@ -1,6 +1,6 @@
 import Card from "react-bootstrap/Card"
 
-const SavedPictureCard = ({photo}) => {
+const SavedPictureCard = ({handleImageSelect, id, smSrc, lgSrc}) => {
 
   return(
     <Card
@@ -10,12 +10,14 @@ const SavedPictureCard = ({photo}) => {
         margin: '10px 0',
         boxShadow: '1px 1px 5px grey',
       }}
-
-       
+      
+      
       >
       <Card.Img
-        src={photo.medSrc}
-        id={photo.photoId}
+        onClick={handleImageSelect}
+        value={lgSrc}
+        src={smSrc}
+        id={id}
       />
     </Card>
   )
