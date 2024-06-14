@@ -10,8 +10,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
   const [pictureArray, setPictureArray] = useState([])
+
   const [page, setPage] = useState(1);
-  const [active, setActive] = useState()
+  const [active, setActive] = useState();
+
   const handlePageClick = (event) => {
     const targetPage = parseInt(event.target.innerText);
     handlePageChange(targetPage);
@@ -29,7 +31,6 @@ const Home = () => {
     })
   };
   const handleInputChange = (event) => {
-    console.log(event.target.value);
     setSearchInput(event.target.value);
   };
   return (

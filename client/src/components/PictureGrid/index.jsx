@@ -1,9 +1,16 @@
-
-import PictureCard from "../PictureCard/index.jsx"
+// import {useState, useEffect} from "react";
+import PictureCard from "../PictureCard/index.jsx";
 import Pagination from "react-bootstrap/Pagination";
-const PictureGrid = ({pictureArray, active, handlePageClick}) => {
+// import { savePhotoIds,getSavedPhotoIds } from "../../utils/localStorage.js";
 
-  let items = [];
+const PictureGrid = ({pictureArray, active, handlePageClick}) => {
+  // const [savedPhotoIds, setSavedPhotoIds] = useState(getSavedPhotoIds())
+  // console.log(savedPhotoIds)
+  // console.log(getSavedPhotoIds())
+  // useEffect(() => {
+  //   return () => savePhotoIds(savedPhotoIds);
+  // });
+  let items = []; 
   for (let number = 1; number <= 10; number++) {
     items.push(
       <Pagination.Item key={number} value={number} active={number === active} >

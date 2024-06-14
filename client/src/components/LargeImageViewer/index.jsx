@@ -8,10 +8,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const LargeImageViewer = ({largeImage, id, handleImageEdit, handleImageDelete, handleImageSend }) => {
 return (
-  <Card style={{border:"3px solid black", display: "flex", flexDirection: "row-reverse"}}>
+  <Card style={{display: "flex", flexDirection: "row-reverse"}}>
     <Card.Img src={largeImage}>
     </Card.Img>
-    <ButtonGroup style={{display: "flex", flexDirection: "column", border: "3px solid purple", justifyContent: "space-around"}}>
+    <ButtonGroup style={{display: "flex", flexDirection: "column", justifyContent: "space-around"}}>
      <FontAwesomeIcon size="4x" type="button" onClick={handleImageEdit} icon={faEdit}/>
      <FontAwesomeIcon size="4x" type="button" onClick={()=>handleImageDelete(id)} icon={faTrash}/>
      <FontAwesomeIcon size="4x" type="button" onClick={handleImageSend} icon={faEnvelope}/>

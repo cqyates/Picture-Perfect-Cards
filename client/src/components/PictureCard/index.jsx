@@ -1,11 +1,12 @@
+import {useState} from "react"
 import {Card} from 'react-bootstrap';
 import {useMutation} from "@apollo/client"
-import {SAVE_PHOTO} from "../../utils/mutations.js"
-import Auth from "../../utils/auth.js"
+import {SAVE_PHOTO} from "../../utils/mutations.js";
+import Auth from "../../utils/auth.js";
 
 const PictureCard = ({ id, imgSrc }) => {
   const [savePhoto, { error }] = useMutation(SAVE_PHOTO);
-
+  const [savedPhotoIds, setSavedPhotoIds] = useState()
   const handleImageSelect = async (event) => {
     const pexelID=event.target.getAttribute("id")
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -27,11 +28,17 @@ const PictureCard = ({ id, imgSrc }) => {
         xlSrc: pData.src.large2x,
         url: pData.url
       }
-      console.log(photoObject)
       const { data } = await savePhoto({
         variables: { photoData: photoObject },
       });
-      console.log(data);
+      console.log(data.savePhoto.savedPhotos)
+      const savedPhotoArray=[]
+      data.savePhoto.savedPhotos.forEach(({photoId})=> {
+      savedPhotoArray.push(photoId)
+    
+    })
+    // setSavedPhotoIds(savedPhotoArray)
+    localStorage.setItem("photoId_Array", JSON.stringify(savedPhotoArray))
     }
     catch (err) {
       console.log("mutation failed", err)
