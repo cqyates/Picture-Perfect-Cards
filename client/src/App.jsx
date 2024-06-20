@@ -36,7 +36,7 @@ import './App.css';
 function App() {
   return (
     <ApolloProvider client={client}>
-    <div style={{ border: '1px solid black', height: '100%' }}>
+    <div style={{height: '100%' }}>
       <Header />
       <main>
         <Outlet />

@@ -49,7 +49,7 @@ const Home = () => {
             </Button>
           </Form.Group>
         </Col>
-        <Col xxl={9} style={{border: "1px solid red"}}>
+        <Col xxl={9}>
           <PictureGrid 
           pictureArray={pictureArray} 
           page={page}
