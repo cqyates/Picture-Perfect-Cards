@@ -1,24 +1,26 @@
-import {useState} from "react"
-import {Card} from 'react-bootstrap';
-import {useMutation} from "@apollo/client"
-import {SAVE_PHOTO} from "../../utils/mutations.js";
-import Auth from "../../utils/auth.js";
+import { Card } from 'react-bootstrap';
+import { useMutation } from '@apollo/client';
+import { SAVE_PHOTO } from '../../utils/mutations.js';
+import Auth from '../../utils/auth.js';
 
 const PictureCard = ({ id, imgSrc }) => {
   const [savePhoto, { error }] = useMutation(SAVE_PHOTO);
-  const [savedPhotoIds, setSavedPhotoIds] = useState()
-  const handleImageSelect = async (event) => {
-    const pexelID=event.target.getAttribute("id")
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+  const handleImageSelect = async (event) => {
+    const pexelID = event.target.getAttribute('id');
+    
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+   
+  
     if (!token) {
       return false;
     }
     try {
-      const apiRes = await fetch(`/api/images/${pexelID}`)
-      const pData= await apiRes.json()
+      const apiRes = await fetch(`/api/images/${pexelID}`);
+      const pData = await apiRes.json();
       const photoObject = {
-        photoId: pData.id.toString(),
+        photoId: pData.id,
         alt: pData.alt,
         photographer: pData.photographer,
         smSrc: pData.src.small,
@@ -26,22 +28,28 @@ const PictureCard = ({ id, imgSrc }) => {
         orgSrc: pData.src.original,
         lgSrc: pData.src.large,
         xlSrc: pData.src.large2x,
-        url: pData.url
-      }
+        url: pData.url,
+      };
       const { data } = await savePhoto({
         variables: { photoData: photoObject },
       });
-      console.log(data.savePhoto.savedPhotos)
-      const savedPhotoArray=[]
-      data.savePhoto.savedPhotos.forEach(({photoId})=> {
-      savedPhotoArray.push(photoId)
-    
-    })
-    // setSavedPhotoIds(savedPhotoArray)
-    localStorage.setItem("photoId_Array", JSON.stringify(savedPhotoArray))
-    }
-    catch (err) {
-      console.log("mutation failed", err)
+      console.log(data, "from Picture Card Component after savePhoto Mutation")
+      //succesfully protects local
+
+      // data.savePhoto.savedPhotos.forEach(({ photoId }) => {
+      //   if (savedPhotoArray.indexOf(photoId) !== -1) {
+      //     console.log(this);
+      //     // savedPhotoArray.push(photoId);
+      //     // TODO solve local storage issue.
+      //     // localStorage.setItem(
+      //     //   'photoId_Array',
+      //     //   JSON.stringify(savedPhotoArray)
+      //     // );
+      //   }
+      // });
+      // setSavedPhotoIds(savedPhotoArray)
+    } catch (err) {
+      console.log('mutation failed', err);
     }
   };
 
@@ -53,13 +61,9 @@ const PictureCard = ({ id, imgSrc }) => {
         margin: '10px 0',
         boxShadow: '1px 1px 5px grey',
       }}
-        onClick={handleImageSelect}
-       
-      >
-      <Card.Img
-        src={imgSrc}
-        id={id}
-      />
+      onClick={handleImageSelect}
+    >
+      <Card.Img src={imgSrc} id={id} />
     </Card>
   );
 };

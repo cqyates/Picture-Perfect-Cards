@@ -7,7 +7,7 @@ const typeDefs = `
   }
   type Photo {
     _id: ID!
-    photoId: String!
+    photoId: Int!
     alt: String!
     lgSrc: String!
     medSrc: String!
@@ -19,7 +19,7 @@ const typeDefs = `
     createdAt: String
   }
   input PhotoInput {
-    photoId: String!
+    photoId: Int!
     alt: String!
     photographer: String
     smSrc: String!
