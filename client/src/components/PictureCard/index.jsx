@@ -1,57 +1,45 @@
 import { Card } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
-import { SAVE_PHOTO } from '../../utils/mutations.js';
-import Auth from '../../utils/auth.js';
+// import { useMutation } from '@apollo/client';
+// import { SAVE_PHOTO } from '../../utils/mutations.js';
+// import Auth from '../../utils/auth.js';
 
-const PictureCard = ({ id, imgSrc }) => {
-  const [savePhoto, { error }] = useMutation(SAVE_PHOTO);
+const PictureCard = ({ id, imgSrc, liked, handleImageSelect }) => {
+  // const [savePhoto, { error }] = useMutation(SAVE_PHOTO);
 
-  const handleImageSelect = async (event) => {
-    const pexelID = event.target.getAttribute('id');
+  // const handleImageSelect = async (event) => {
+  //   const pexelID = event.target.getAttribute('id');
     
 
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
    
   
-    if (!token) {
-      return false;
-    }
-    try {
-      const apiRes = await fetch(`/api/images/${pexelID}`);
-      const pData = await apiRes.json();
-      const photoObject = {
-        photoId: pData.id,
-        alt: pData.alt,
-        photographer: pData.photographer,
-        smSrc: pData.src.small,
-        medSrc: pData.src.medium,
-        orgSrc: pData.src.original,
-        lgSrc: pData.src.large,
-        xlSrc: pData.src.large2x,
-        url: pData.url,
-      };
-      const { data } = await savePhoto({
-        variables: { photoData: photoObject },
-      });
-      console.log(data, "from Picture Card Component after savePhoto Mutation")
-      //succesfully protects local
-
-      // data.savePhoto.savedPhotos.forEach(({ photoId }) => {
-      //   if (savedPhotoArray.indexOf(photoId) !== -1) {
-      //     console.log(this);
-      //     // savedPhotoArray.push(photoId);
-      //     // TODO solve local storage issue.
-      //     // localStorage.setItem(
-      //     //   'photoId_Array',
-      //     //   JSON.stringify(savedPhotoArray)
-      //     // );
-      //   }
-      // });
-      // setSavedPhotoIds(savedPhotoArray)
-    } catch (err) {
-      console.log('mutation failed', err);
-    }
-  };
+  //   if (!token) {
+  //     return false;
+  //   }
+  //   try {
+  //     const apiRes = await fetch(`/api/images/${pexelID}`);
+  //     const pData = await apiRes.json();
+  //     const photoObject = {
+  //       photoId: pData.id,
+  //       alt: pData.alt,
+  //       photographer: pData.photographer,
+  //       smSrc: pData.src.small,
+  //       medSrc: pData.src.medium,
+  //       orgSrc: pData.src.original,
+  //       lgSrc: pData.src.large,
+  //       xlSrc: pData.src.large2x,
+  //       url: pData.url,
+  //     };
+      
+  //     const { data } = await savePhoto({
+  //       variables: { photoData: photoObject },
+  //     });
+  //     console.log(data, "from Picture Card Component after savePhoto Mutation")
+      
+  //   } catch (err) {
+  //     console.log('mutation failed', err);
+  //   }
+  // };
 
   return (
     <Card
