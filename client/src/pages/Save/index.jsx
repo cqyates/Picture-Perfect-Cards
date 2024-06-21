@@ -22,15 +22,10 @@ const Save = () => {
 
   const handleImageSelect = (event) => {
     const largeSrc = event.target.getAttribute("value");
-    console.log(largeSrc)
     const photoId = event.target.getAttribute("id");
-    console.log(photoId)
     setFeaturedImage({largeSrc: largeSrc, photoId: photoId})
-    console.log(featuredImage)
   }
   const handleImageDelete = async (photoId) => {
-    console.log(photoId)
-    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -41,9 +36,8 @@ const Save = () => {
       const { data } = await removePhoto({
         variables: { photoId },
       });
-      console.log(data)
-      // upon success, remove book's id from localStorage
-      
+  
+     console.log(data, "after removePhoto Mutation")
     } catch (err) {
       console.error(err);
     }

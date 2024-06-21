@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 import { Row, Col, Container, Form, Button } from 'react-bootstrap';
 
@@ -7,12 +10,19 @@ import PictureGrid from "../../components/PictureGrid/index.jsx"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+
 const Home = () => {
   const [searchInput, setSearchInput] = useState('');
-  const [pictureArray, setPictureArray] = useState([])
+  const [pictureArray, setPictureArray] = useState([]);
+
+  const [savedImages, setSavedImages] = useState([]);
 
   const [page, setPage] = useState(1);
   const [active, setActive] = useState();
+
+  const { loading, data } = useQuery(QUERY_ME);
+
+  const savedPhotoArray = data?.me.savedPhotos || [];
 
   const handlePageClick = (event) => {
     const targetPage = parseInt(event.target.innerText);
@@ -24,10 +34,8 @@ const Home = () => {
     handleSearch(page)
   };
   const handleSearch = (page) => {
-    console.log(searchInput);
     fetch(`/api/images/${searchInput}/${page}`).then(response => response.json()).then(data => {
-      console.log(data.photos)
-      setPictureArray(data.photos)
+     setPictureArray(data.photos)
     })
   };
   const handleInputChange = (event) => {

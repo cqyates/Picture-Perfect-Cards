@@ -4,7 +4,7 @@ const dateFormat = require('../utils/dateFormat');
 const photoSchema = new Schema(
   {
     photoId: {
-      type: String,
+      type: Number,
       required: true
     },
     alt: {

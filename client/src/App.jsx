@@ -7,8 +7,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-
 import Header from './components/Header/index.jsx';
+import './App.css';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -31,18 +31,16 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-import './App.css';
-// import Footer from "./components/Footer";
+
 function App() {
   return (
     <ApolloProvider client={client}>
-    <div style={{height: '100%' }}>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-    </div>
-
+      <div style={{ minHeight: '100vh' }}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+      </div>
     </ApolloProvider>
   );
 }
